@@ -7,30 +7,32 @@ import './App.css'
 
 function App (){
   const [Points, setPoints ] = useState([])
-  const [VarX, setVarX] = useState(Number)
-  const [VarY, setVarY] = useState(Number)
+  const [VarX, setVarX] = useState()
+  const [VarY, setVarY] = useState()
 
-  let PointsCordinates = []
+  
 
   function GetCordinates(event){
-    let x = event.clientX;
-    let y = event.clientY;
-    setVarX(x)
-    setVarY(y)
+    let x = event.clientX - 10;
+    let y = event.clientY - 10;
+
     setPoints([...Points, {x, y}])
     
-    console.log(Points)
+    
     
   }
-  console.log("VarX:",VarX)
-  console.log("VarY:",VarY)
+ console.log(Points)
   
   
   return(
-  <div className="container">
-  <div style={{color: "red"}} onClick={GetCordinates}>
-    <div className='Circular' style={{position:'absolute', top:VarY, left:VarX }}></div>
-  </div>
+  <div className="container" onClick={GetCordinates}>
+    {Points.map((Point) =>{
+      return(
+        <div className='Circular' style={{position:'absolute', top:Point.y, left:Point.x }}></div>
+      )
+      
+    })}
+  
   
   </div>
   )
