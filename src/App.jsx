@@ -7,8 +7,8 @@ import './App.css'
 
 function App (){
   const [Points, setPoints ] = useState([])
-  const [memory, setMemory] = useState()
-  const [VarY, setVarY] = useState()
+  const [memo, setMemo] = useState([])
+
 
   
 
@@ -22,18 +22,27 @@ function App (){
 
  function unDoFunction(){
   const newPoints = [...Points]
+  setMemo([...Points])
+  
   newPoints.pop()
   setPoints(newPoints)
   console.log('Points',Points)
   console.log("New",newPoints)
   
  }
+
+ function reDoFunction(){
+  setPoints(memo)
+ 
+ }
+
+ 
   
   
   return(
   <div className="allContent">
     <button className="unDo" onClick={unDoFunction} style={{height:40, width:80, backgroundColor: 'red'}}>Desfazer</button>
-    <button className="reDo" style={{height:40, width:80, backgroundColor:'green'}}>Refazer</button>
+    <button className="reDo" onClick={reDoFunction} style={{height:40, width:80, backgroundColor:'green'}}>Refazer</button>
     
   <div className="container" onClick={GetCordinates}>
   <div className="buttons" style={{}}>
