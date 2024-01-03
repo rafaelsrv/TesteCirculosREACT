@@ -50,6 +50,7 @@ function App (){
     {Points.map((Point) =>{
       return(
         <div className='Circular' style={{position:'absolute', top:Point.y, left:Point.x }}></div>
+        
       )
       
     })}
